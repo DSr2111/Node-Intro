@@ -16,6 +16,8 @@ cat(process.argv[2]);
 
 async function webCat(url) {
   try {
+    let res = await axios.get(url);
+    console.log(res.data);
   } catch (err) {
     console.log(err);
   }
