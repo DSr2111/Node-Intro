@@ -14,4 +14,9 @@ function cat(path) {
 
 cat(process.argv[2]);
 
-async function webCat(url) {}
+async function webCat(url) {
+  try {
+  } catch (err) {
+    console.log(err);
+  }
+}
