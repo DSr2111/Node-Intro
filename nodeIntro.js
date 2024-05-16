@@ -35,9 +35,19 @@ async function webCat(url, out) {
   }
 }
 
-// check to see if path is url or not, then decide webCat vs cat
+//check for --out in command-line args, if so, take the next argument and use that as the path to write to
 
-let path = process.argv[2];
+let path;
+let out;
+
+if (process.argv[2] === "--out") {
+  out = process.argv[3];
+  path = process.argv[4];
+} else {
+  path = process.argv[2];
+}
+
+// check to see if path is url or not, then decide webCat vs cat
 
 if (path.slice(0, 4) === "http") {
   webCat(path);
