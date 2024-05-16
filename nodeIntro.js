@@ -9,6 +9,8 @@ function handleOut(text, out) {
         console.error(`Couldn't wrote ${out}: ${err}`);
       }
     });
+  } else {
+    console.log(text);
   }
 }
 
