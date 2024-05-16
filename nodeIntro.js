@@ -2,6 +2,16 @@ const fs = require("fs");
 const process = require("process");
 const axios = require("axios");
 
+function handleOut(text, out) {
+  if (out) {
+    fs.writeFile(out, text, "utf-8", function (err) {
+      if (err) {
+        console.error(`Couldn't wrote ${out}: ${err}`);
+      }
+    });
+  }
+}
+
 function cat(path) {
   fs.readFile(path, "utf8", function (err, data) {
     if (err) {
