@@ -14,21 +14,21 @@ function handleOut(text, out) {
   }
 }
 
-function cat(path) {
+function cat(path, out) {
   fs.readFile(path, "utf8", function (err, data) {
     if (err) {
       console.error(`Error reading ${path}: ${err}`);
       process.exit(1);
     } else {
-      console.log(data);
+      handleOut(data, out);
     }
   });
 }
 
-async function webCat(url) {
+async function webCat(url, out) {
   try {
     let res = await axios.get(url);
-    console.log(res.data);
+    handleOut(res.data, out);
   } catch (err) {
     console.error(`Error reading ${path}: ${err}`);
     process.exit(1);
