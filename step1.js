@@ -12,13 +12,22 @@ function cat(path) {
   });
 }
 
-cat(process.argv[2]);
-
 async function webCat(url) {
   try {
     let res = await axios.get(url);
     console.log(res.data);
   } catch (err) {
     console.error(`Error reading ${path}: ${err}`);
+    process.exit(1);
   }
+}
+
+// check to see if path is url or not, then decide webCat vs cat
+
+let path = process.argv[2];
+
+if (path.slice(0, 4) === "http") {
+  webCat(path);
+} else {
+  cat(path);
 }
